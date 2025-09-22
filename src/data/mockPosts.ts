@@ -3,202 +3,174 @@ import type { Post } from "../types/post";
 export const mockPosts: Post[] = [
   {
     id: "1",
-    title: "Mastering Arrays in DSA",
-    description: "Learn how arrays work as the base of DSA.",
-    content: "Arrays provide random access and are the foundation of many algorithms.",
-    code: `int[] arr = {1,2,3}; Console.WriteLine(arr[0]);`,
-    createdAt: "2025-01-01T09:00:00Z",
+    title: "Minimal APIs in .NET 8",
+    description: "Lightweight way to build APIs with reduced boilerplate.",
+    content: "Minimal APIs let you define routes directly without controllers, making them ideal for microservices and prototypes.",
+    code: `var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/hello", () => "Hello World");
+
+app.Run();`,
+    createdAt: "2025-01-17T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "C#"],
+    image: "/images/dotnet-minimal-api.png",
+    tags: [".NET", "MinimalAPI", "C#", "WebAPI"],
+    language: "csharp"
   },
   {
     id: "2",
-    title: "Linked List Implementation in JavaScript",
-    description: "Singly Linked List implementation in JS.",
-    content: "Linked lists allow dynamic memory usage unlike arrays.",
-    code: `class Node { constructor(v){ this.val=v; this.next=null; } }`,
-    createdAt: "2025-01-02T09:00:00Z",
+    title: "Channels in .NET",
+    description: "System.Threading.Channels for producer-consumer scenarios.",
+    content: "Channels provide a thread-safe way to pass messages between producers and consumers asynchronously.",
+    code: `var channel = Channel.CreateUnbounded<int>();
+
+// Producer
+_ = Task.Run(async () => {
+  for (int i = 1; i <= 5; i++) {
+    await channel.Writer.WriteAsync(i);
+    Console.WriteLine($"Produced {i}");
+  }
+  channel.Writer.Complete();
+});
+
+// Consumer
+await foreach (var item in channel.Reader.ReadAllAsync()) {
+  Console.WriteLine($"Consumed {item}");
+}`,
+    createdAt: "2025-01-18T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "JavaScript"],
+    image: "/images/dotnet-channels.png",
+    tags: [".NET", "Channels", "Concurrency", "C#"],
+    language: "csharp"
   },
   {
     id: "3",
-    title: "Stack vs Queue",
-    description: "Stack (LIFO) vs Queue (FIFO).",
-    content: "Stacks are good for recursion, queues for scheduling.",
-    code: `Queue<int> q = new Queue<int>(); q.Enqueue(1);`,
-    createdAt: "2025-01-03T09:00:00Z",
+    title: "ConcurrentBag in .NET",
+    description: "Thread-safe collection for unordered data.",
+    content: "ConcurrentBag allows multiple threads to add/remove items safely without locking.",
+    code: `var bag = new ConcurrentBag<int>();
+
+Parallel.For(0, 5, i => {
+  bag.Add(i);
+  Console.WriteLine($"Added {i}");
+});
+
+while (bag.TryTake(out int item)) {
+  Console.WriteLine($"Removed {item}");
+}`,
+    createdAt: "2025-01-19T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA"],
+    image: "/images/dotnet-concurrentbag.png",
+    tags: [".NET", "ConcurrentBag", "Threading", "C#"],
+    language: "csharp"
   },
   {
     id: "4",
-    title: "Binary Search in C#",
-    description: "Efficient search in sorted arrays.",
-    content: "Binary search has O(log n) complexity.",
-    code: `int BinarySearch(int[] arr,int target){ ... }`,
-    createdAt: "2025-01-04T09:00:00Z",
+    title: "Task vs Thread in .NET",
+    description: "Understanding the difference between Tasks and Threads.",
+    content: "Thread represents a low-level unit of execution, while Task is a higher-level abstraction built on the ThreadPool for easier async programming.",
+    code: `// Thread
+var thread = new Thread(() => Console.WriteLine("Running in a Thread"));
+thread.Start();
+
+// Task
+await Task.Run(() => Console.WriteLine("Running in a Task"));`,
+    createdAt: "2025-01-20T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "Algorithms"],
+    image: "/images/dotnet-task-vs-thread.png",
+    tags: [".NET", "Task", "Thread", "Async", "C#"],
+    language: "csharp"
   },
   {
     id: "5",
-    title: "Merge Sort Algorithm",
-    description: "Divide and conquer sorting.",
-    content: "Merge sort splits and merges arrays efficiently.",
-    code: `void MergeSort(int[] arr,int l,int r){ ... }`,
-    createdAt: "2025-01-05T09:00:00Z",
+    title: "LINQ in C#",
+    description: "Query collections easily with LINQ.",
+    content: "LINQ (Language Integrated Query) provides a powerful way to query collections and databases with readable syntax.",
+    code: `var numbers = new[] { 1, 2, 3, 4, 5, 6 };
+var evens = numbers.Where(n => n % 2 == 0);
+
+foreach (var n in evens)
+  Console.WriteLine(n);`,
+    createdAt: "2025-01-21T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "Sorting"],
+    image: "/images/dotnet-linq.png",
+    tags: ["C#", "LINQ", "Collections", ".NET"],
+    language: "csharp"
   },
   {
     id: "6",
-    title: "Quick Sort Algorithm",
-    description: "Partition-based sorting.",
-    content: "Quick sort picks a pivot and partitions elements.",
-    code: `void QuickSort(int[] arr,int low,int high){ ... }`,
-    createdAt: "2025-01-06T09:00:00Z",
+    title: "let and const in ES6",
+    description: "Block-scoped variable declarations in ES6.",
+    content: "let allows reassignment, const prevents reassignment. Both are block-scoped unlike var.",
+    code: `let name = "Hanifa";
+name = "Mohamed";
+
+const pi = 3.14;
+// pi = 3.14159; // Error
+console.log(name, pi);`,
+    createdAt: "2025-01-22T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "Sorting"],
+    image: "/images/js-let-const.png",
+    tags: ["JavaScript", "ES6", "let", "const"],
+    language: "javascript"
   },
   {
     id: "7",
-    title: "Dynamic Programming Basics",
-    description: "Solve overlapping subproblems efficiently.",
-    content: "DP stores results to avoid recomputation.",
-    code: `int Fib(int n, int[] memo){ if(n<=1) return n; if(memo[n]!=0) return memo[n]; return memo[n]=Fib(n-1,memo)+Fib(n-2,memo); }`,
-    createdAt: "2025-01-07T09:00:00Z",
+    title: "Arrow Functions in ES6",
+    description: "Concise syntax for functions.",
+    content: "Arrow functions provide shorter syntax and lexical this binding.",
+    code: `const add = (a, b) => a + b;
+console.log(add(2, 3));`,
+    createdAt: "2025-01-23T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: ["DSA", "Dynamic Programming"],
+    image: "/images/js-arrow-functions.png",
+    tags: ["JavaScript", "ES6", "ArrowFunctions"],
+    language: "javascript"
   },
   {
     id: "8",
-    title: "Task vs ValueTask in .NET",
-    description: "Performance differences explained.",
-    content: "ValueTask reduces allocations in high-performance async methods.",
-    code: `public async ValueTask<int> GetDataAsync(){ return 42; }`,
-    createdAt: "2025-01-08T09:00:00Z",
+    title: "Template Literals in ES6",
+    description: "Use backticks for multi-line strings and interpolation.",
+    content: "Template literals make string concatenation easier with ${}.",
+    code: `const name = "Hanifa";
+const greeting = \`Hello, \${name}! Welcome to ES6.\`;
+console.log(greeting);`,
+    createdAt: "2025-01-24T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: [".NET", "Async"],
+    image: "/images/js-template-literals.png",
+    tags: ["JavaScript", "ES6", "TemplateLiterals"],
+    language: "javascript"
   },
   {
     id: "9",
-    title: "Understanding Middleware in ASP.NET Core",
-    description: "Middleware pipeline explained.",
-    content: "Each middleware can handle requests and pass control to the next.",
-    code: `app.Use(async (ctx,next)=>{ Console.WriteLine("Hello"); await next(); });`,
-    createdAt: "2025-01-09T09:00:00Z",
+    title: "Destructuring in ES6",
+    description: "Extract values from arrays and objects easily.",
+    content: "Destructuring simplifies assignments by unpacking values directly.",
+    code: `const [a, b] = [10, 20];
+const {x, y} = {x: 1, y: 2};
+
+console.log(a, b, x, y);`,
+    createdAt: "2025-01-25T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: [".NET", "Middleware"],
+    image: "/images/js-destructuring.png",
+    tags: ["JavaScript", "ES6", "Destructuring"],
+    language: "javascript"
   },
   {
     id: "10",
-    title: "Dependency Injection in ASP.NET Core",
-    description: "Built-in DI container usage.",
-    content: "Register services and inject them into controllers.",
-    code: `builder.Services.AddScoped<IMyService, MyService>();`,
-    createdAt: "2025-01-10T09:00:00Z",
+    title: "Promises in ES6",
+    description: "Handle asynchronous operations with promises.",
+    content: "Promises represent a value that will be available now, later, or never.",
+    code: `const fetchData = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Data loaded"), 1000);
+});
+
+fetchData.then(data => console.log(data));`,
+    createdAt: "2025-01-26T09:00:00Z",
     author: "Mohamed Hanifa",
-    tags: [".NET", "DI"],
-  },
-  {
-    id: "11",
-    title: "Multithreading in .NET",
-    description: "Using threads for parallel execution.",
-    content: "Threads can improve performance but require synchronization.",
-    code: `Thread t = new Thread(()=>Console.WriteLine("Hi")); t.Start();`,
-    createdAt: "2025-01-11T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: [".NET", "Multithreading"],
-  },
-  {
-    id: "12",
-    title: "Async/Await in JavaScript",
-    description: "Modern async handling.",
-    content: "Async functions return promises and allow cleaner syntax.",
-    code: `async function fetchData(){ let res = await fetch('/'); }`,
-    createdAt: "2025-01-12T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["JavaScript", "Async"],
-  },
-  {
-    id: "13",
-    title: "Event Loop in JS",
-    description: "Understanding microtasks vs macrotasks.",
-    content: "JS executes sync code first, then processes async tasks.",
-    code: `console.log("1"); setTimeout(()=>console.log("2"),0); console.log("3");`,
-    createdAt: "2025-01-13T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["JavaScript"],
-  },
-  {
-    id: "14",
-    title: "Closures in JavaScript",
-    description: "How closures capture variables.",
-    content: "Closures allow inner functions to access outer variables.",
-    code: `function outer(){ let x=10; return ()=>console.log(x); }`,
-    createdAt: "2025-01-14T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["JavaScript"],
-  },
-  {
-    id: "15",
-    title: "ES6 Modules in JS",
-    description: "Using import/export.",
-    content: "Modules allow splitting code into reusable files.",
-    code: `export function add(a,b){ return a+b; }`,
-    createdAt: "2025-01-15T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["JavaScript", "ES6"],
-  },
-  {
-    id: "16",
-    title: "SignalR in ASP.NET Core",
-    description: "Real-time communication framework.",
-    content: "SignalR simplifies WebSocket connections for real-time apps.",
-    code: `app.MapHub<ChatHub>("/chat");`,
-    createdAt: "2025-01-16T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: [".NET", "SignalR"],
-  },
-  {
-    id: "17",
-    title: "Minimal APIs in .NET 8",
-    description: "Lightweight HTTP endpoints.",
-    content: "Minimal APIs reduce boilerplate compared to controllers.",
-    code: `app.MapGet("/hello", ()=>"Hello World");`,
-    createdAt: "2025-01-17T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: [".NET", "MinimalAPI"],
-  },
-  {
-    id: "18",
-    title: "Graph Traversal: BFS",
-    description: "Breadth-first search explained.",
-    content: "BFS uses queue for level-wise traversal.",
-    code: `void BFS(int start){ Queue<int> q = new(); ... }`,
-    createdAt: "2025-01-18T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["DSA", "Graphs"],
-  },
-  {
-    id: "19",
-    title: "Graph Traversal: DFS",
-    description: "Depth-first search explained.",
-    content: "DFS can be implemented using recursion or stack.",
-    code: `void DFS(int node,bool[] visited){ ... }`,
-    createdAt: "2025-01-19T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["DSA", "Graphs"],
-  },
-  {
-    id: "20",
-    title: "Heap Data Structure",
-    description: "MinHeap and MaxHeap basics.",
-    content: "Heaps are used in priority queues and heapsort.",
-    code: `PriorityQueue<int,int> pq = new(); pq.Enqueue(5,5);`,
-    createdAt: "2025-01-20T09:00:00Z",
-    author: "Mohamed Hanifa",
-    tags: ["DSA", "Heap"],
-  },
+    image: "/images/js-promises.png",
+    tags: ["JavaScript", "ES6", "Promises", "Async"],
+    language: "javascript"
+  }
 ];
