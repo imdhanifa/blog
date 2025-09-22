@@ -1,0 +1,56 @@
+/* ------------------------------
+   Tailwind Base Layers
+------------------------------ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------
+   Theme Variables
+------------------------------ */
+:root {
+  --color-primary: #2563EB; /* Default fallback (blue) */
+}
+
+/* Light mode */
+html.light {
+  color-scheme: light;
+  --color-primary: #2563EB; /* iOS system blue */
+}
+
+/* Dark mode */
+html.dark {
+  color-scheme: dark;
+  --color-primary: #9333EA; /* iOS purple accent */
+}
+
+/* Accent helpers */
+.text-primary {
+  color: var(--color-primary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+/* .border-primary {
+  border-color: var(--color-primary);
+} */
+
+/* ------------------------------
+   Scrollbar & Scroll Behavior
+------------------------------ */
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smooth scrolling (anchor links, inertia on iOS/macOS) */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
