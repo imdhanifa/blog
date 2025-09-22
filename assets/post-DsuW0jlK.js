@@ -1,4 +1,4 @@
-import{importShared as Ne}from"./__federation_fn_import-BEgTCs-s.js";import{c as tg,j as H}from"./__federation_expose_BlogApp-DUVQIuLR.js";import{getPostById as rg}from"./__federation_expose_PostsApi-BAiQHEzi.js";import{c as ke,g as ag}from"./_commonjsHelpers-Cpj98o6Y.js";/**
+import{importShared as Ne}from"./__federation_fn_import-BEgTCs-s.js";import{c as tg,j as H}from"./__federation_expose_BlogApp-fwrklXgR.js";import{getPostById as rg}from"./__federation_expose_PostsApi-dqe6kO0-.js";import{c as ke,g as ag}from"./_commonjsHelpers-Cpj98o6Y.js";/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
