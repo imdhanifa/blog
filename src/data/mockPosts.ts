@@ -1,3 +1,5 @@
+import type { Post } from "../types/post";
+
 export const mockPosts: Post[] = [
   {
     id: "1",
